@@ -1,0 +1,43 @@
+{
+  "name": "math.set",
+  "version": "0.3.0",
+  "description": "a class representation of cartesian products of real sets",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "mocha": "mocha --recursive",
+    "lint": "eslint .",
+    "test": "npm run lint && npm run mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xgbuils/math.set.git"
+  },
+  "keywords": [
+    "set",
+    "cartesian",
+    "mathematics",
+    "math"
+  ],
+  "author": "Xavier Garcia Buils <xgbuils@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xgbuils/math.set/issues"
+  },
+  "homepage": "https://github.com/xgbuils/math.set#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.12.2",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "iterum": "^0.8.3",
+    "lexer.generator": "^0.2.0",
+    "math.real-set": "../math.real-set",
+    "parser.generator": "^0.2.1",
+    "parser.status": "^0.1.0",
+    "parser.token": "^0.1.0"
+  }
+}
