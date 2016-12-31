@@ -6,8 +6,8 @@ const parserStatus = require('parser.status')
 
 const parser = require('./parser')
 
-function parse (string, aliasSets) {
-    const lexerIterator = lexerGenerator(string, lexerConfig(aliasSets))
+function parse (string, sets, RealSet) {
+    const lexerIterator = lexerGenerator(string, lexerConfig({sets, RealSet}))
     const parserIterator = parserGenerator(lexerIterator, parserTokenClasses, parserStatus('START_EXPR'))
     return parser(parserIterator)
 }

@@ -1,16 +1,14 @@
-const RealSet = require('math.real-set')
-
-module.exports = function (sets) {
+module.exports = function (deps) {
     return {
         ignore: /\s+/,
         creators: [{
             regexp: /\w+/,
-            transform: sets,
+            transform: deps.sets,
             type: 'set'
         }, {
             regexp: /[\(\[\{][\w.,\s-+]+[\)\]\}](\s*U\s*[\(\[\{][\w.,\s-+]+[\)\]\}])*/,
             transform: function (key) {
-                return new RealSet(key)
+                return new deps.RealSet(key)
             },
             type: 'set'
         }, {

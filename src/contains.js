@@ -6,11 +6,9 @@ module.exports = function (deps) {
             ? b instanceof RealSet
             : Array.isArray(b) && a.length === b.length
         if (comparable) {
-            if (firstIsRealSet) {
-                return a.contains(b)
-            } else {
-                return a.every((x, i) => contains(x, b[i]))
-            }
+            return firstIsRealSet
+                ? a.contains(b)
+                : a.every((x, i) => contains(x, b[i]))
         }
         return false
     }

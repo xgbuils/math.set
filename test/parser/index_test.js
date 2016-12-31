@@ -11,7 +11,7 @@ describe('set parser', function () {
             it('returns an array with the same set that means', function () {
                 const expr = '(-1, 8)'
                 const set = RealSet(expr)
-                const result = parse(expr)
+                const result = parse(expr, {}, RealSet)
                 expect(rawSet(result)).to.be.deep.equal(rawSet(set))
             })
         })
@@ -27,7 +27,7 @@ describe('set parser', function () {
 
                 const result = parse(expr, {
                     R: R
-                })
+                }, RealSet)
                 expect(result.length).to.be.equal(4)
                 expect(result.slice(0, 3).map(rawSet)).to.be.deep.equal([aset, aset, aset].map(rawSet))
                 expect(result[3].map(rawSet)).to.be.deep.equal([R, R, bset].map(rawSet))
