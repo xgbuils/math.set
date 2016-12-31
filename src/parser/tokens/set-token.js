@@ -1,15 +1,3 @@
-const ParserToken = require('parser.token')
-
-class SetToken extends ParserToken {
-    constructor (token) {
-        super(token, [
-            'START_EXPR',
-            'NESTED_ARGUMENT_TUPLE',
-            'ARGUMENT_TUPLE'
-        ], next)
-    }
-}
-
 function next (status) {
     const parserStatus = this.parserStatus
     if (status === 'START_EXPR') {
@@ -21,4 +9,12 @@ function next (status) {
         : status.replace('ARGUMENT', 'SEPARATOR')
 }
 
-module.exports = SetToken
+module.exports = deps => class SetToken extends deps.ParserToken {
+    constructor (token) {
+        super(token, [
+            'START_EXPR',
+            'NESTED_ARGUMENT_TUPLE',
+            'ARGUMENT_TUPLE'
+        ], next)
+    }
+}

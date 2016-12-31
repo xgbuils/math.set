@@ -1,13 +1,3 @@
-const ParserToken = require('parser.token')
-
-class ParenthesisRightToken extends ParserToken {
-    constructor (token) {
-        super(token, [
-            'NESTED_SEPARATOR_TUPLE'
-        ], next)
-    }
-}
-
 function next (status, values) {
     const parserStatus = this.parserStatus
     parserStatus.pop()
@@ -18,4 +8,10 @@ function next (status, values) {
     return parserStatus.getStatus()
 }
 
-module.exports = ParenthesisRightToken
+module.exports = deps => class ParenthesisRightToken extends deps.ParserToken {
+    constructor (token) {
+        super(token, [
+            'NESTED_SEPARATOR_TUPLE'
+        ], next)
+    }
+}

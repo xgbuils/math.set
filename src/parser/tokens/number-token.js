@@ -1,14 +1,3 @@
-const ParserToken = require('parser.token')
-
-class NumberToken extends ParserToken {
-    constructor (token) {
-        super(token, [
-            'NESTED_ARGUMENT_NUMBER',
-            'ARGUMENT_NUMBER'
-        ], next)
-    }
-}
-
 function next (status, values) {
     const value = values.pop()
     const power = this.value
@@ -19,4 +8,11 @@ function next (status, values) {
     return status.replace('ARGUMENT_NUMBER', 'SEPARATOR_TUPLE')
 }
 
-module.exports = NumberToken
+module.exports = deps => class NumberToken extends deps.ParserToken {
+    constructor (token) {
+        super(token, [
+            'NESTED_ARGUMENT_NUMBER',
+            'ARGUMENT_NUMBER'
+        ], next)
+    }
+}

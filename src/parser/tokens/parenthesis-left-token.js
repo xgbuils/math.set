@@ -1,15 +1,3 @@
-const ParserToken = require('parser.token')
-
-class ParenthesisLeftToken extends ParserToken {
-    constructor (token) {
-        super(token, [
-            'START_EXPR',
-            'NESTED_ARGUMENT_TUPLE',
-            'ARGUMENT_TUPLE'
-        ], next)
-    }
-}
-
 function next (status) {
     if (status === 'START_EXPR') {
         this.parserStatus.push('END_EXPR')
@@ -18,4 +6,12 @@ function next (status) {
     return 'NESTED_ARGUMENT_TUPLE'
 }
 
-module.exports = ParenthesisLeftToken
+module.exports = deps => class ParenthesisLeftToken extends deps.ParserToken {
+    constructor (token) {
+        super(token, [
+            'START_EXPR',
+            'NESTED_ARGUMENT_TUPLE',
+            'ARGUMENT_TUPLE'
+        ], next)
+    }
+}

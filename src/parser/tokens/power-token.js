@@ -1,6 +1,8 @@
-const ParserToken = require('parser.token')
+function next (status) {
+    return status.replace('SEPARATOR_TUPLE', 'ARGUMENT_NUMBER')
+}
 
-class PowerToken extends ParserToken {
+module.exports = deps => class PowerToken extends deps.ParserToken {
     constructor (token) {
         super(token, [
             'NESTED_SEPARATOR_TUPLE',
@@ -8,9 +10,3 @@ class PowerToken extends ParserToken {
         ], next)
     }
 }
-
-function next (status) {
-    return status.replace('SEPARATOR_TUPLE', 'ARGUMENT_NUMBER')
-}
-
-module.exports = PowerToken
