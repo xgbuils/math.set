@@ -1,15 +1,14 @@
 const ParserToken = require('parser.token')
 
-function SetToken (token) {
-    ParserToken.call(this, token, [
-        'START_EXPR',
-        'NESTED_ARGUMENT_TUPLE',
-        'ARGUMENT_TUPLE'
-    ], next)
+class SetToken extends ParserToken {
+    constructor (token) {
+        super(token, [
+            'START_EXPR',
+            'NESTED_ARGUMENT_TUPLE',
+            'ARGUMENT_TUPLE'
+        ], next)
+    }
 }
-
-SetToken.prototype = Object.create(ParserToken.prototype)
-SetToken.prototype.constructor = SetToken
 
 function next (status) {
     const parserStatus = this.parserStatus

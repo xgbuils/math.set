@@ -1,14 +1,13 @@
 const ParserToken = require('parser.token')
 
-function NumberToken (token) {
-    ParserToken.call(this, token, [
-        'NESTED_ARGUMENT_NUMBER',
-        'ARGUMENT_NUMBER'
-    ], next)
+class NumberToken extends ParserToken {
+    constructor (token) {
+        super(token, [
+            'NESTED_ARGUMENT_NUMBER',
+            'ARGUMENT_NUMBER'
+        ], next)
+    }
 }
-
-NumberToken.prototype = Object.create(ParserToken.prototype)
-NumberToken.prototype.constructor = NumberToken
 
 function next (status, values) {
     const value = values.pop()

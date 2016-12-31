@@ -1,15 +1,14 @@
 const ParserToken = require('parser.token')
 
-function ParenthesisLeftToken (token) {
-    ParserToken.call(this, token, [
-        'START_EXPR',
-        'NESTED_ARGUMENT_TUPLE',
-        'ARGUMENT_TUPLE'
-    ], next)
+class ParenthesisLeftToken extends ParserToken {
+    constructor (token) {
+        super(token, [
+            'START_EXPR',
+            'NESTED_ARGUMENT_TUPLE',
+            'ARGUMENT_TUPLE'
+        ], next)
+    }
 }
-
-ParenthesisLeftToken.prototype = Object.create(ParserToken.prototype)
-ParenthesisLeftToken.prototype.constructor = ParenthesisLeftToken
 
 function next (status) {
     if (status === 'START_EXPR') {

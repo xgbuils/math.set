@@ -1,15 +1,14 @@
 const ParserToken = require('parser.token')
 
-function EndToken (token) {
-    ParserToken.call(this, token, [
-        'END_EXPR',
-        'SEPARATOR_TUPLE',
-        'NESTED_SEPARATOR_TUPLE'
-    ], next)
+class EndToken extends ParserToken {
+    constructor (token) {
+        super(token, [
+            'END_EXPR',
+            'SEPARATOR_TUPLE',
+            'NESTED_SEPARATOR_TUPLE'
+        ], next)
+    }
 }
-
-EndToken.prototype = Object.create(ParserToken.prototype)
-EndToken.prototype.constructor = EndToken
 
 function next () {
     const parserStatus = this.parserStatus
