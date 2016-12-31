@@ -1,14 +1,14 @@
-var lexerGenerator = require('lexer.generator')
-var lexerConfig = require('./lexer-config')
-var parserGenerator = require('parser.generator')
-var parserTokenClasses = require('./tokens/')
-var parserStatus = require('parser.status')
+const lexerGenerator = require('lexer.generator')
+const lexerConfig = require('./lexer-config')
+const parserGenerator = require('parser.generator')
+const parserTokenClasses = require('./tokens/')
+const parserStatus = require('parser.status')
 
-var parser = require('./parser')
+const parser = require('./parser')
 
 function parse (string, aliasSets) {
-    var lexerIterator = lexerGenerator(string, lexerConfig(aliasSets))
-    var parserIterator = parserGenerator(lexerIterator, parserTokenClasses, parserStatus('START_EXPR'))
+    const lexerIterator = lexerGenerator(string, lexerConfig(aliasSets))
+    const parserIterator = parserGenerator(lexerIterator, parserTokenClasses, parserStatus('START_EXPR'))
     return parser(parserIterator)
 }
 

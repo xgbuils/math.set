@@ -1,4 +1,4 @@
-var ParserToken = require('parser.token')
+const ParserToken = require('parser.token')
 
 function ParenthesisRightToken (token) {
     ParserToken.call(this, token, [
@@ -10,7 +10,7 @@ ParenthesisRightToken.prototype = Object.create(ParserToken.prototype)
 ParenthesisRightToken.prototype.constructor = ParenthesisRightToken
 
 function next (status, values) {
-    var parserStatus = this.parserStatus
+    const parserStatus = this.parserStatus
     parserStatus.pop()
     if (values.length === 1) {
     	values = values[0]

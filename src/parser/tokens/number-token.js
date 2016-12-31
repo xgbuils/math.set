@@ -1,4 +1,4 @@
-var ParserToken = require('parser.token')
+const ParserToken = require('parser.token')
 
 function NumberToken (token) {
     ParserToken.call(this, token, [
@@ -11,9 +11,9 @@ NumberToken.prototype = Object.create(ParserToken.prototype)
 NumberToken.prototype.constructor = NumberToken
 
 function next (status, values) {
-    var value = values.pop()
-    var power = this.value
-    for (var i = 0; i < power; ++i) {
+    const value = values.pop()
+    const power = this.value
+    for (let i = 0; i < power; ++i) {
         values.push(value)
     }
 

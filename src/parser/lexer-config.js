@@ -1,4 +1,4 @@
-var RealSet = require('math.real-set')
+const RealSet = require('math.real-set')
 
 module.exports = function (sets) {
     return {

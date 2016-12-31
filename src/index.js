@@ -1,19 +1,14 @@
-var parse = require('./parser/')
-var RealSet = require('math.real-set')
+const contains = require('./contains')
+const parse = require('./parser/')
+const RealSet = require('math.real-set')
 
-function MSet (options) {
-    var R = RealSet('(-Infinity, Infinity)')
-    var expr
-    var given = {}
-    if (typeof options === 'string') {
-        given.R = R
-        expr = options
-    } else {
-        given = options.given || {}
-        given.R = R
-        expr = options.set || ''
-    }
-    this.set = parse(expr, given)
+const factory = require('./factory')
+
+const Rdep = {
+    RealSet: RealSet
 }
 
-module.exports = MSet
+module.exports = factory(Object.assign(Rdep, {
+    contains: contains(Rdep),
+    parse: parse
+}))

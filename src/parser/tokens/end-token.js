@@ -1,4 +1,4 @@
-var ParserToken = require('parser.token')
+const ParserToken = require('parser.token')
 
 function EndToken (token) {
     ParserToken.call(this, token, [
@@ -12,8 +12,8 @@ EndToken.prototype = Object.create(ParserToken.prototype)
 EndToken.prototype.constructor = EndToken
 
 function next () {
-    var parserStatus = this.parserStatus
-    var value = parserStatus.pop()
+    const parserStatus = this.parserStatus
+    let value = parserStatus.pop()
     if (value.length === 1) {
         value = value[0]
     }

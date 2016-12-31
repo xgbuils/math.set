@@ -1,4 +1,4 @@
-var ParserToken = require('parser.token')
+const ParserToken = require('parser.token')
 
 function PowerToken (token) {
     ParserToken.call(this, token, [

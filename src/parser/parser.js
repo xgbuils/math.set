@@ -1,7 +1,6 @@
-function parser (parserIterator) {
-    var iterator = parserIterator
-    var status = iterator.next()
-    var value
+function parser (iterator) {
+    let status = iterator.next()
+    let value
     while (!status.done) {
         value = status.value
         status = iterator.next()
